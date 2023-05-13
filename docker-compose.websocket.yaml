@@ -1,0 +1,11 @@
+services:
+  websocket:
+    container_name: "ddev-${DDEV_SITENAME}-websocket"
+    image: ddev-websocket
+    build:
+      context: websocket
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app:cached
+    ports:
+      - "8080"
