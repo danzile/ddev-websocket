@@ -1,11 +1,16 @@
+version: '3.6'
 services:
   websocket:
     container_name: "ddev-${DDEV_SITENAME}-websocket"
     image: ddev-websocket
     build:
-      context: websocket
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: .ddev/websocket/Dockerfile
     volumes:
-      - .:/app:cached
+      - ./:/app:cached
     ports:
-      - "8080"
+      - "8888:8888"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+      com.docker.compose.project: ddev-$DDEV_SITENAME
